@@ -6,11 +6,14 @@
 Aplikasi penerjemah teks game secara real-time.
 Capture layar, OCR (Tesseract.js), terjemahkan via Google Translate.
 
+DOWNLOAD: https://github.com/lindoalvindro-spec/Gengo-Apps/releases/latest
+
 ===========================================
    CARA INSTALL
 ===========================================
 
-1. Download file "Gengo.zip"
+1. Download Gengo.zip dari:
+   https://github.com/lindoalvindro-spec/Gengo-Apps/releases/latest
 2. Ekstrak ZIP ke folder mana saja (misal: Documents\Gengo)
 3. Buka folder hasil ekstrak
 4. Double-klik "Gengo.exe"
