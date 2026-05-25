@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gengo Logo Preview</title>
+<style>
+  body { 
+    background: #0a0d0a; display: flex; flex-direction: column; align-items: center; 
+    justify-content: center; min-height: 100vh; gap: 40px; font-family: monospace;
+  }
+  canvas { image-rendering: pixelated; border: 2px solid #10b98122; border-radius: 16px; }
+  .label { color: #94a3b8; font-size: 13px; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+
+<div class="label">GENGO — PIXEL LOGO PREVIEW</div>
+<canvas id="c" width="16" height="16"></canvas>
+<p style="color:#64748b;font-size:11px">Right-click canvas &rarr; Save image as PNG</p>
+
+<script>
+const P = [ // 16x16 pixel art grid (0=transparent, 1=dark, 2=green, 3=light, 4=accent, 5=cyan)
+//  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
+  [0,1,2,2,2,2,2,2,2,2,2,2,2,2,1,0],
+  [0,1,2,3,3,3,3,3,3,3,3,3,3,2,1,0],
+  [0,1,2,3,1,5,5,5,5,5,5,0,3,2,1,0],
+  [0,1,2,3,1,5,4,5,4,5,4,0,3,2,1,0],
+  [0,1,2,3,1,5,4,5,4,5,4,0,3,2,1,0],
+  [0,1,2,3,1,5,5,5,5,5,4,0,3,2,1,0],
+  [0,1,2,3,1,5,4,5,5,5,5,0,3,2,1,0],
+  [0,1,2,3,1,5,4,5,4,5,4,0,3,2,1,0],
+  [0,1,2,3,1,5,5,5,4,5,4,0,3,2,1,0],
+  [0,1,2,3,1,0,0,0,0,0,0,0,3,2,1,0],
+  [0,1,2,3,3,3,3,3,3,3,3,3,3,2,1,0],
+  [0,1,2,2,2,2,2,2,2,2,2,2,2,2,1,0],
+  [0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+];
+
+const colors = [
+  'rgba(0,0,0,0)',        // 0 transparent
+  '#071a0e',              // 1 darkest green (frame)
+  '#0d3320',              // 2 dark green (inner border)  
+  '#10b981',              // 3 green (main fill)
+  '#34d399',              // 4 light green (highlight)
+  '#6ee7b7',              // 5 cyan-green (the 'G' letter)
+];
+
+const S = 16; // scale factor for preview
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const out = document.createElement('canvas');
+out.width = 512; out.height = 512;
+
+function draw(target, scale) {
+  target.width = 16 * scale;
+  target.height = 16 * scale;
+  const g = target.getContext('2d');
+  g.imageSmoothingEnabled = false;
+  for (let y = 0; y < 16; y++) {
+    for (let x = 0; x < 16; x++) {
+      g.fillStyle = colors[P[y][x]];
+      g.fillRect(x * scale, y * scale, scale, scale);
+    }
+  }
+}
+
+draw(canvas, 32);   // preview 512x512
+draw(out, 32);       // output 512x512
+
+// Download button
+canvas.oncontextmenu = (e) => {
+  e.preventDefault?.();
+  const a = document.createElement('a');
+  a.download = 'gengo-logo.png';
+  a.href = out.toDataURL('image/png');
+  a.click();
+};
+canvas.title = 'Right-click → Save image as PNG';
+</script>
+</body>
+</html>

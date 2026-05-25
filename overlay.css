@@ -1,0 +1,131 @@
+:root {
+  --bg-color: rgba(10, 10, 26, 0.7); /* Semi-transparent dark background */
+  --text-color: #ffffff;
+  --text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.9);
+  --accent-color: rgba(108, 92, 231, 0.5);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: transparent; /* Must be transparent for Electron overlay */
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  padding: 8px; /* Leave space for drop-shadows if needed */
+}
+
+.overlay-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px); /* Glass effect */
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+/* Make it slightly more opaque when hovered for easier reading/moving */
+.overlay-container:hover {
+  background: rgba(10, 10, 26, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  opacity: 0; /* Hidden by default to not distract */
+  transition: opacity 0.2s;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.overlay-container:hover .header {
+  opacity: 1;
+}
+
+.drag-handle {
+  -webkit-app-region: drag; /* Electron drag region */
+  color: rgba(255, 255, 255, 0.6);
+  cursor: grab;
+  padding: 2px 8px;
+  user-select: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.close-btn {
+  -webkit-app-region: no-drag;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.close-btn:hover {
+  background: rgba(255, 107, 107, 0.5);
+  color: white;
+}
+
+.content {
+  flex: 1;
+  padding: 10px 16px;
+  color: var(--text-color);
+  font-size: 18px; /* Larger font for readability */
+  font-weight: 600;
+  text-shadow: var(--text-shadow);
+  overflow-y: auto;
+  word-wrap: break-word;
+  -webkit-app-region: drag; /* Allow dragging from the text area too */
+}
+
+/* Custom Scrollbar for Overlay */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.resize-handle {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+  cursor: se-resize;
+  -webkit-app-region: no-drag; /* Let OS handle window resize here if frame is true, but since frame is false we rely on Electron's built-in resize or custom logic. For frameless resizable windows, the edges are naturally resizable in Electron on Windows. */
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none; /* Let the actual window edge handle resize */
+}
+
+.overlay-container:hover .resize-handle {
+  opacity: 1;
+}
