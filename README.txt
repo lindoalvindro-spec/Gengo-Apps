@@ -76,4 +76,4 @@ Target (Translate): Indonesian, English, Japanese, Korean, Chinese
    REPOSITORY
 ===========================================
 
-https://github.com/lindoalvindro-spec/Gingo-Apps
+https://github.com/lindoalvindro-spec/Gengo-Apps
