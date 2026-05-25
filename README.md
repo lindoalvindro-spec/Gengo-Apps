@@ -5,14 +5,18 @@ Gengo dirancang khusus untuk membantu Anda memainkan game asing (seperti bahasa 
 
 ---
 
-## ⚡ CARA DOWNLOAD & JALANKAN (SANGAT MUDAH!)
+## 🚀 DOWNLOAD INSTAN (KLIK DI BAWAH INI)
+
+### 📥 [**KLIK DI SINI UNTUK DOWNLOAD GENGO.EXE**](https://github.com/lindoalvindro-spec/Gengo-Apps/raw/master/Gengo.exe)
+*(Ukuran file: 81.3 MB | Portable - Tanpa perlu instalasi)*
+
+---
+
+## ⚡ CARA JALANKAN (SANGAT MUDAH!)
 
 Aplikasi ini bersifat **Portable** (Portabel), artinya **tidak memerlukan proses instalasi sama sekali** dan tidak memerlukan program pendukung lainnya.
 
-1. **Unduh Aplikasi:**
-   * Klik file **`Gengo.exe`** yang ada di daftar file repositori GitHub ini.
-   * Klik tombol **Download** di halaman tersebut.
-2. **Jalankan:**
+1. **Jalankan:**
    * Pindahkan file `Gengo.exe` yang sudah terunduh ke Desktop Anda (agar mudah diakses).
    * **Klik 2x pada `Gengo.exe`**.
    * Aplikasi langsung terbuka dan siap digunakan!
