@@ -99,7 +99,7 @@ ipcMain.handle('ocr-init', async (event, langCode) => {
       : __dirname;
 
     ocrWorker = await Tesseract.createWorker(langCode, 1, {
-      langPath: traineddataPath,
+      cachePath: traineddataPath,
       logger: (m) => {
         if (m.status === 'recognizing text') {
           const pct = Math.round(m.progress * 100);
