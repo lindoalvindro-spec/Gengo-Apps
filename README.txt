@@ -10,14 +10,18 @@ Capture layar, OCR (Tesseract.js), terjemahkan via Google Translate.
    CARA INSTALL
 ===========================================
 
-1. Ekstrak file ZIP ke folder mana saja
-2. Buka folder hasil ekstrak
-3. Double-klik "Gengo.exe"
-4. Selesai! Aplikasi langsung jalan.
+1. Download file "Gengo.zip"
+2. Ekstrak ZIP ke folder mana saja (misal: Documents\Gengo)
+3. Buka folder hasil ekstrak
+4. Double-klik "Gengo.exe"
+5. Selesai! Aplikasi langsung jalan.
 
    >> Tidak perlu install
    >> Tidak perlu setup API key
    >> Semua dependency sudah include
+
+   BIKIN SHORTCUT DI DESKTOP:
+   Klik kanan "Gengo.exe" -> Kirim ke -> Desktop (create shortcut)
 
 ===========================================
    REQUIREMENT
