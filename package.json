@@ -1,6 +1,6 @@
 {
   "name": "gengo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Live game translator — capture, OCR, and translate game text in real-time",
   "main": "main.js",
   "scripts": {
