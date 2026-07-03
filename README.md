@@ -5,10 +5,10 @@ Gengo dirancang khusus untuk membantu Anda memainkan game asing (seperti bahasa 
 
 ---
 
-## 🚀 DOWNLOAD INSTAN (KLIK DI BAWAH INI)
+## 🚀 DOWNLOAD APLIKASI
 
-### 📥 [**KLIK DI SINI UNTUK DOWNLOAD GENGO.ZIP (v1.0.0 Stable)**](https://github.com/lindoalvindro-spec/Gengo-Apps/releases/latest/download/Gengo.zip)
-*(Setelah download, klik kanan file `Gengo.zip` -> Extract All, lalu jalankan `Gengo 1.0.0.exe`)*
+### 📥 [**KLIK DI SINI UNTUK MENUJU HALAMAN DOWNLOAD (Releases)**](https://github.com/lindoalvindro-spec/Gengo-Apps/releases/latest)
+*(Di halaman tersebut, klik file `Gengo.zip` di bagian **Assets**. Setelah terunduh, klik kanan file `Gengo.zip` -> Extract All, lalu jalankan `Gengo 1.0.0.exe`)*
 
 ✨ **Pembaruan Terbaru (Stable Release):**
 - **Performa Jauh Lebih Ringan:** Memperbaiki *memory leak* agar aplikasi tidak melambat saat dipakai berjam-jam.
