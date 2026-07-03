@@ -2,7 +2,7 @@
   "name": "gengo",
   "version": "1.0.1",
   "description": "Live game translator — capture, OCR, and translate game text in real-time",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "dev": "electron . --dev",
@@ -16,9 +16,8 @@
     },
     "extraResources": [
       {
-        "from": ".",
-        "to": "traineddata",
-        "filter": ["*.traineddata"]
+        "from": "traineddata",
+        "to": "traineddata"
       }
     ],
     "win": {

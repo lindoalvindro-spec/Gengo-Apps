@@ -20,7 +20,7 @@ function createWindow() {
     frame: false,
     transparent: false,
     backgroundColor: '#071a0e',
-    icon: path.join(__dirname, 'icon.ico'),
+    icon: path.join(__dirname, '../assets/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -29,7 +29,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
   mainWindow.setAlwaysOnTop(true, 'screen-saver');
 
   if (process.argv.includes('--dev')) {
@@ -65,7 +65,7 @@ function createOverlayWindow() {
     },
   });
 
-  overlayWindow.loadFile('overlay.html');
+  overlayWindow.loadFile(path.join(__dirname, 'overlay.html'));
   overlayWindow.setAlwaysOnTop(true, 'screen-saver');
 
   overlayWindow.on('closed', () => {
@@ -96,7 +96,7 @@ ipcMain.handle('ocr-init', async (event, langCode) => {
 
     const traineddataPath = app.isPackaged
       ? path.join(process.resourcesPath, 'traineddata')
-      : __dirname;
+      : path.join(__dirname, '..', 'traineddata');
 
     ocrWorker = await Tesseract.createWorker(langCode, 1, {
       cachePath: traineddataPath,
