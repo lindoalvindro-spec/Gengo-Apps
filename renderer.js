@@ -71,6 +71,11 @@ const els = {
   deletePresetBtn: $('deletePresetBtn'),
 };
 
+// ===== Reusable Elements for Capture (Memory Leak Fix) =====
+const captureVideo = document.createElement('video');
+const cropCanvas = document.createElement('canvas');
+const cropCtx = cropCanvas.getContext('2d', { willReadFrequently: true });
+
 // ===== Initialization =====
 async function init() {
   setupWindowControls();
@@ -158,8 +163,6 @@ async function selectSource(source) {
         mandatory: {
           chromeMediaSource: 'desktop',
           chromeMediaSourceId: source.id,
-          minWidth: 1280,
-          minHeight: 720,
           maxWidth: 3840,
           maxHeight: 2160,
         },
@@ -334,35 +337,30 @@ async function captureAndProcess() {
   setStatus('processing', 'Capturing screen...');
 
   try {
-    // Capture frame from stream
-    const video = document.createElement('video');
-    video.srcObject = state.mediaStream;
-    await video.play();
+    // Reuse video element for capture
+    if (captureVideo.srcObject !== state.mediaStream) {
+      captureVideo.srcObject = state.mediaStream;
+      await captureVideo.play();
+    } else if (captureVideo.paused) {
+      await captureVideo.play();
+    }
 
     // Wait for video to have data
-    await new Promise((resolve) => {
-      if (video.readyState >= 2) return resolve();
-      video.onloadeddata = resolve;
-    });
+    if (captureVideo.readyState < 2) {
+      await new Promise((resolve) => {
+        captureVideo.onloadeddata = resolve;
+      });
+    }
 
-    // Draw full frame
-    const fullCanvas = document.createElement('canvas');
-    fullCanvas.width = video.videoWidth;
-    fullCanvas.height = video.videoHeight;
-    const fullCtx = fullCanvas.getContext('2d');
-    fullCtx.drawImage(video, 0, 0);
-
-    video.pause();
-    video.srcObject = null;
-
-    // Crop to region
+    // Crop directly from video to cropCanvas
     const region = state.captureRegion;
-    const cropCanvas = document.createElement('canvas');
-    cropCanvas.width = region.width;
-    cropCanvas.height = region.height;
-    const cropCtx = cropCanvas.getContext('2d');
+    if (cropCanvas.width !== region.width || cropCanvas.height !== region.height) {
+      cropCanvas.width = region.width;
+      cropCanvas.height = region.height;
+    }
+    
     cropCtx.drawImage(
-      fullCanvas,
+      captureVideo,
       region.x, region.y, region.width, region.height,
       0, 0, region.width, region.height
     );
@@ -675,8 +673,12 @@ function setupEventListeners() {
   // Interval slider
   els.intervalSlider.addEventListener('input', (e) => {
     const val = parseInt(e.target.value);
-    state.intervalMs = val * 1000;
     els.intervalValue.textContent = `${val}s`;
+  });
+
+  els.intervalSlider.addEventListener('change', (e) => {
+    const val = parseInt(e.target.value);
+    state.intervalMs = val * 1000;
 
     // Update interval if running
     if (state.isCapturing) {

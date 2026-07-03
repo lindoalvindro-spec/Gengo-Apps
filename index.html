@@ -19,7 +19,7 @@
       <span class="app-badge live-indicator">LIVE</span>
     </div>
     <div class="titlebar-right">
-      <button class="pin-btn active" id="pinBtn" title="Always on Top">
+      <button class="pin-btn active tooltip-host" id="pinBtn" data-hint="Always on Top (Aplikasi akan selalu berada di depan dan tidak tertutup saat Alt+Tab)">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 17v5"/><path d="M9 2h6l-1 7h4l-7 8V9H7l2-7z"/>
         </svg>
@@ -175,20 +175,20 @@
         <span class="interval-value" id="intervalValue">3s</span>
       </div>
     </section>
-
-    <!-- Status Bar -->
-    <footer class="status-bar" id="statusBar">
-      <div class="status-left">
-        <span class="status-dot" id="statusDot"></span>
-        <span class="status-text" id="statusText">Ready</span>
-      </div>
-      <div class="status-right">
-        <span class="status-info" id="ocrEngine">OCR: Tesseract.js</span>
-        <div class="status-divider-vertical"></div>
-        <span class="status-info" id="apiInfo">API: Google Translate</span>
-      </div>
-    </footer>
   </main>
+
+  <!-- Status Bar -->
+  <footer class="status-bar" id="statusBar">
+    <div class="status-left">
+      <span class="status-dot" id="statusDot"></span>
+      <span class="status-text" id="statusText">Ready</span>
+    </div>
+    <div class="status-right">
+      <span class="status-info" id="ocrEngine">OCR: Tesseract.js</span>
+      <div class="status-divider-vertical"></div>
+      <span class="status-info" id="apiInfo">API: Google Translate</span>
+    </div>
+  </footer>
 
   <!-- Region Selection Overlay (fullscreen, hidden by default) -->
   <div class="region-overlay" id="regionOverlay" style="display:none;">

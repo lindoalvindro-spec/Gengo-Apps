@@ -142,6 +142,14 @@ ipcMain.handle('ocr-translate', async (event, { text, source, target }) => {
   try {
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${source}&tl=${target}&dt=t&q=${encodeURIComponent(text)}`;
     const response = await fetch(url);
+
+    if (!response.ok) {
+      if (response.status === 429) {
+        return { success: false, error: 'Terlalu banyak permintaan (Rate Limit). Mohon jeda sebentar.' };
+      }
+      return { success: false, error: `HTTP Error: ${response.status} ${response.statusText}` };
+    }
+
     const data = await response.json();
 
     if (data && data[0]) {
