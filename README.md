@@ -7,8 +7,15 @@ Gengo dirancang khusus untuk membantu Anda memainkan game asing (seperti bahasa 
 
 ## 🚀 DOWNLOAD INSTAN (KLIK DI BAWAH INI)
 
-### 📥 [**KLIK DI SINI UNTUK DOWNLOAD GENGO.EXE**](https://github.com/lindoalvindro-spec/Gengo-Apps/raw/master/Gengo.exe)
-*(Ukuran file: 81.3 MB | Portable - Tanpa perlu instalasi)*
+### 📥 [**KLIK DI SINI UNTUK DOWNLOAD GENGO.ZIP (v1.0.0 Stable)**](https://github.com/lindoalvindro-spec/Gengo-Apps/releases/latest/download/Gengo.zip)
+*(Setelah download, klik kanan file `Gengo.zip` -> Extract All, lalu jalankan `Gengo 1.0.0.exe`)*
+
+✨ **Pembaruan Terbaru (Stable Release):**
+- **Performa Jauh Lebih Ringan:** Memperbaiki *memory leak* agar aplikasi tidak melambat saat dipakai berjam-jam.
+- **Support Layar Kecil:** Aplikasi kini bisa berjalan lancar untuk menangkap (capture) layar di monitor resolusi kecil.
+- **Scroll Mulus:** Memperbaiki masalah kotak *Capture Preview* yang sebelumnya terpotong dan tidak bisa di-scroll.
+- **Anti-Error Translate:** Sistem terjemahan kini anti-crash meskipun koneksi Google Translate sedang padat (*Rate Limit*).
+- **Tooltip Cerdas:** Menambahkan penjelasan khusus (tooltip) di ikon Pin "Always on Top" saat mouse didiamkan 1 detik.
 
 ---
 
@@ -17,8 +24,8 @@ Gengo dirancang khusus untuk membantu Anda memainkan game asing (seperti bahasa 
 Aplikasi ini bersifat **Portable** (Portabel), artinya **tidak memerlukan proses instalasi sama sekali** dan tidak memerlukan program pendukung lainnya.
 
 1. **Jalankan:**
-   * Pindahkan file `Gengo.exe` yang sudah terunduh ke Desktop Anda (agar mudah diakses).
-   * **Klik 2x pada `Gengo.exe`**.
+   * Ekstrak file `Gengo.zip` yang sudah terunduh (Klik Kanan -> Extract All).
+   * Buka foldernya dan **Klik 2x pada `Gengo 1.0.0.exe`**.
    * Aplikasi langsung terbuka dan siap digunakan!
 
 *Catatan: Jika Windows menampilkan peringatan keamanan saat pertama kali dijalankan, klik **"More info"** lalu pilih **"Run anyway"**.*
